@@ -9,7 +9,7 @@ var jsonStateVar = {
     "display" : ""
 };
 
-var operators = {
+var operatorss = {
     "+" : function(left_exp, right_exp) {return left_exp + right_exp},
     "-" : function(left_exp, right_exp) {return left_exp - right_exp},
     "*" : function(left_exp, right_exp) {return left_exp * right_exp},
