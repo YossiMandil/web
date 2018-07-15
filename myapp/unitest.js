@@ -129,6 +129,10 @@ function testUpdateOperator(s){
      return failed;
 }
 
+function tetsCalculateNextState(s){
+    //TODO add testsssssss
+}
+
 
 function testFaild(s,testNumber,msg){
     console.log("*************************************");
@@ -151,11 +155,13 @@ function testAll(){
     faild = testUpdateNumber(s);
 
     console.log('\n\ntestting calculateValue');
-    faild = testCalculateValue(s);
+    faild |= testCalculateValue(s);
 
     s=initialize();
     console.log('\n\ntestting updateOperator');
-    faild = testUpdateOperator(s);
+    faild |= testUpdateOperator(s);
+
+    //TODO add test for calculateNextStep
 
 
 

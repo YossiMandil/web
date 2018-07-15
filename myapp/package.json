@@ -18,6 +18,7 @@
   "homepage": "https://github.com/YossiMandil/web#readme",
   "dependencies": {
     "chai": "^4.1.2",
+    "express": "^4.16.3",
     "mocha": "^5.2.0"
   },
   "devDependencies": {
