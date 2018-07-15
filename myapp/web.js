@@ -40,7 +40,7 @@ module.exports = {
             jsonState.operator = operator;
         }
         else{
-            jsonState.display = this.calculateValue(jsonState.left_exp,jsonState.operator,
+            jsonState.display = module.exports.calculateValue(jsonState.left_exp,jsonState.operator,
                 jsonState.right_exp);
             jsonState.right_exp = '';
             if (operator == '='){
