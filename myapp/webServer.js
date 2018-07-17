@@ -38,7 +38,7 @@ var c = 1;
 }).listen(3000);*/
 
 
-var server = http.createServer().listen(3000);
+/*var server = http.createServer().listen(3000);
 
 server.on('request', function (req, res) {
     if (req.method == 'POST') {
@@ -59,4 +59,43 @@ server.on('request', function (req, res) {
     });
 });
 
-console.log('Listening on port 3000');
+console.log('Listening on port 3000');*/
+
+
+
+const express = require('express')
+
+const app = express()
+
+app.use(express.json());
+
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+let counter = 0
+
+app.use(express.static(__dirname + '/public'))
+app.get('/counter', function(req, res) {
+  console.log(req.method)
+
+  res.json({value: counter})
+})
+
+app.post('/calculate', function(req, res) {
+  //const increment = parseInt(req.query['input'] || '1')
+  console.log('shit just got real');
+
+  console.log(req.body);
+  res.send("FU");
+
+})
+
+app.get('/foo', (req, res) => {
+  const text = readFile('foo.html')
+
+  res.send(text)
+})
+
+app.listen(/*process.env.PORT*/3000, () => console.log('listening...'))
