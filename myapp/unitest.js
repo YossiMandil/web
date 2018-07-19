@@ -130,7 +130,129 @@ function testUpdateOperator(s){
 }
 
 function tetsCalculateNextState(s){
-    //TODO add testsssssss
+    var failed = false;
+    var testNumber = 1;
+    var updateOperator = web.updateOperator;
+    var calculateNextState = web.calculateNextState;
+
+    s = calculateNextState(null, "11");
+    s = JSON.parse(s);
+
+    if(s.left_exp != "11" || s.display != "11") {
+        testFaild(s, testNumber, "expected left: 11, right: '', display: 11, operator: ''");
+        failed = true;
+    }
+
+    //console.log("test 1");
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "0");
+    s = JSON.parse(s);
+    if(s.left_exp != "110" || s.display != "110") {
+        testFaild(s, testNumber, "expected left: 110, right: '', display: 110, operator: ''");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "+");
+    s = JSON.parse(s);
+    if(s.left_exp != "110" || s.display != "110" || s.operator != "+") {
+        testFaild(s, testNumber, "expected left: 110, right: '', display: 110, operator: +");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "4");
+    s = JSON.parse(s);
+    if(s.left_exp != "110" || s.right_exp != "4" || s.display != "4" || s.operator != "+") {
+        testFaild(s, testNumber, "expected left: 110, right: 4, display: 4, operator: +");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "/");
+    s = JSON.parse(s);
+    if(s.left_exp != "114" || s.right_exp != "" || s.display != "114" || s.operator != "/") {
+        testFaild(s, testNumber, "expected left: 114, right: '', display: 114, operator: /");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "3");
+    s = JSON.parse(s);
+    if(s.left_exp != "114" || s.right_exp != "3" || s.display != "3" || s.operator != "/") {
+        testFaild(s, testNumber, "expected left: 114, right: 3, display: 3, operator: /");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "=");
+    s = JSON.parse(s);
+    if(s.left_exp != "" || s.right_exp != "" || s.display != "38" || s.operator != "") {
+        testFaild(s, testNumber, "expected left: '', right: '', display: 38, operator: ''");
+        failed = true;
+    }
+
+    testNumber++;
+    
+    s = calculateNextState(JSON.stringify(s) , "-");
+    s = JSON.parse(s);
+    if(s.left_exp != "38" || s.right_exp != "" || s.display != "38" || s.operator != "-") {
+        testFaild(s, testNumber, "expected left: 38, right: '', display: 38, operator: -");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "8");
+    
+    s = JSON.parse(s);
+    if(s.left_exp != "38" || s.right_exp != "8" || s.display != "8" || s.operator != "-") {
+        testFaild(s, testNumber, "expected left: 38, right: 8, display: 8, operator: -");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "*");
+    
+    s = JSON.parse(s);
+    
+    if(s.left_exp != "30" || s.right_exp != "" || s.display != "30" || s.operator != "*") {
+    
+        testFaild(s, testNumber, "expected left: 30, right: '', display: 30, operator: *");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "5");
+    s = JSON.parse(s);
+    
+    if(s.left_exp != "30" || s.right_exp != "5" || s.display != "5" || s.operator != "*") { 
+        testFaild(s, testNumber, "expected left: 30, right: 5, display: 5, operator: *");
+        failed = true;
+    }
+
+    testNumber++;
+
+    s = calculateNextState(JSON.stringify(s) , "=");
+    s = JSON.parse(s);
+    
+    if(s.left_exp != "" || s.right_exp != "" || s.display != "150" || s.operator != "") { 
+        testFaild(s, testNumber, "expected left: '', right: '', display: 150, operator: ''");
+        failed = true;
+    }
+
+    testNumber++;
+    //console.log(JSON.stringify(s));
+
+    return failed;
 }
 
 
@@ -149,8 +271,8 @@ function testFaild(s,testNumber,msg){
 
 
 function testAll(){
-    let s = null;
-    s= initialize();
+    var s = null;
+    s = initialize();
     console.log('testting updateNumber');
     faild = testUpdateNumber(s);
 
@@ -161,8 +283,8 @@ function testAll(){
     console.log('\n\ntestting updateOperator');
     faild |= testUpdateOperator(s);
 
-    //TODO add test for calculateNextStep
-
+    console.log('\ntesting calculateNextState');
+    faild |= tetsCalculateNextState(s);
 
 
     console.log('\n');
