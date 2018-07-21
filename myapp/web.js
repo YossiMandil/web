@@ -5,16 +5,16 @@ module.exports = {
     calculateNextState: function (jsonState, input) {
 
         if (jsonState == null) {
-            return this.initialize(input);
+            return module.exports.initialize(input);
         }
     
         var a = JSON.parse(jsonState);
         
         if ('+-/*='.indexOf(input) > -1) {
-            a = this.updateOperator(a, input);   
+            a = module.exports.updateOperator(a, input);   
                 
         } else  {
-            a = this.updateNumber(a, input);
+            a = module.exports.updateNumber(a, input);
         }
         return JSON.stringify(a);
     },
