@@ -1,9 +1,10 @@
 var request = require('sync-request');
-var path = "http://localhost:3000";
+var path = "http://localhost:9090";
 
 
 
 function testAll(){
+    // todo add testss!!!!!!!
     try{
         myTest = buildTest(null,"8","8");
         res = test(myTest,"1");
