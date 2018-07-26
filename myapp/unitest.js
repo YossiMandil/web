@@ -1,5 +1,5 @@
 var request = require('request');
-var web = require('./web');
+var web = require('./calculator');
 var http = require('http');
 var fs = require('fs');
 

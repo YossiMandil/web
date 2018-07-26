@@ -14,7 +14,13 @@ module.exports = {
             a = module.exports.updateOperator(a, input);   
                 
         } else  {
-            a = module.exports.updateNumber(a, input);
+            // check if its a number
+            if (/^\d+$/.test(input)){
+                a = module.exports.updateNumber(a, input);
+            }
+            else{
+                a.display = 'Error!';
+            } 
         }
         return JSON.stringify(a);
     },
@@ -32,11 +38,18 @@ module.exports = {
 
 
     updateOperator: function (jsonState, operator){
+        if(jsonState.display == 'Error!'){
+            return jsonState;
+        }
         if (jsonState.left_exp == ''){
             jsonState.left_exp = jsonState.display;
         }
 
         if(jsonState.right_exp == ''){
+            if(jsonState.operator != ''){
+                jsonState.display = 'Error!';
+                return jsonState;
+            }
             jsonState.operator = operator;
         }
         else{
@@ -71,6 +84,9 @@ module.exports = {
     },
 
     updateNumber: function (jsonState, input) {
+        if (jsonState.display == 'Error'){
+            return module.exports.initialize(input);
+        }
         // if we want to update left expr
         if (jsonState.operator == "") {
             jsonState.display = jsonState.left_exp += input;
