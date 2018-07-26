@@ -20,4 +20,4 @@ app.post('/calculate', function(req, res) {
 
 })
 
-app.listen(3002, () => console.log('listening...'))
+app.listen(3000, () => console.log('listening...'))
