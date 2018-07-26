@@ -1,5 +1,5 @@
 var request = require('sync-request');
-var path = "http://localhost:9090";
+var path = "http://localhost:3000";
 
 
 
@@ -14,6 +14,7 @@ function testAll(){
         res = test(myTest,"3");
         myTest = buildTest(res,"=","13");
         res = test(myTest,"4");
+	console.log('test passed');
     }
     catch(err){
         console.log(err.message);
