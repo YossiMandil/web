@@ -15,10 +15,11 @@ module.exports = {
                 
         } else  {
             // check if its a number
-            if (/^\d+$/.test(input)){
+            if ("0123456789".indexOf(input) > -1){
                 a = module.exports.updateNumber(a, input);
             }
             else{
+                a = JSON.parse(module.exports.initialize(''));
                 a.display = 'Error!';
             } 
         }
@@ -47,8 +48,9 @@ module.exports = {
 
         if(jsonState.right_exp == ''){
             if(jsonState.operator != ''){
-                jsonState.display = 'Error!';
-                return jsonState;
+                var s = JSON.parse(module.exports.initialize(''));
+                s.display = 'Error!';
+                return s;
             }
             jsonState.operator = operator;
         }

@@ -135,123 +135,129 @@ function tetsCalculateNextState(s){
     var updateOperator = web.updateOperator;
     var calculateNextState = web.calculateNextState;
 
-    s = calculateNextState(null, "11");
+    s = calculateNextState(null, "1");
     s = JSON.parse(s);
 
-    if(s.left_exp != "11" || s.display != "11") {
-        testFaild(s, testNumber, "expected left: 11, right: '', display: 11, operator: ''");
+    //test 1
+    if(s.left_exp != "1" || s.display != "1") {
+        testFaild(s, testNumber, "expected left: 1, right: '', display: 1, operator: ''");
         failed = true;
     }
-
-    //console.log("test 1");
     testNumber++;
 
+    //test 2
     s = calculateNextState(JSON.stringify(s) , "0");
     s = JSON.parse(s);
-    if(s.left_exp != "110" || s.display != "110") {
-        testFaild(s, testNumber, "expected left: 110, right: '', display: 110, operator: ''");
+    if(s.left_exp != "10" || s.display != "10") {
+        testFaild(s, testNumber, "expected left: 10, right: '', display: 10, operator: ''");
         failed = true;
     }
 
     testNumber++;
 
+    //test 3
     s = calculateNextState(JSON.stringify(s) , "+");
     s = JSON.parse(s);
-    if(s.left_exp != "110" || s.display != "110" || s.operator != "+") {
-        testFaild(s, testNumber, "expected left: 110, right: '', display: 110, operator: +");
+    if(s.left_exp != "10" || s.display != "10" || s.operator != "+") {
+        testFaild(s, testNumber, "expected left: 10, right: '', display: 10, operator: +");
         failed = true;
     }
 
     testNumber++;
 
+    //test 4
     s = calculateNextState(JSON.stringify(s) , "4");
     s = JSON.parse(s);
-    if(s.left_exp != "110" || s.right_exp != "4" || s.display != "4" || s.operator != "+") {
-        testFaild(s, testNumber, "expected left: 110, right: 4, display: 4, operator: +");
+    if(s.left_exp != "10" || s.right_exp != "4" || s.display != "4" || s.operator != "+") {
+        testFaild(s, testNumber, "expected left: 10, right: 4, display: 4, operator: +");
         failed = true;
     }
 
     testNumber++;
 
+    //test 5
     s = calculateNextState(JSON.stringify(s) , "/");
     s = JSON.parse(s);
-    if(s.left_exp != "114" || s.right_exp != "" || s.display != "114" || s.operator != "/") {
-        testFaild(s, testNumber, "expected left: 114, right: '', display: 114, operator: /");
+    if(s.left_exp != "14" || s.right_exp != "" || s.display != "14" || s.operator != "/") {
+        testFaild(s, testNumber, "expected left: 14, right: '', display: 14, operator: /");
         failed = true;
     }
 
     testNumber++;
 
-    s = calculateNextState(JSON.stringify(s) , "3");
+    //test 6
+    s = calculateNextState(JSON.stringify(s) , "7");
     s = JSON.parse(s);
-    if(s.left_exp != "114" || s.right_exp != "3" || s.display != "3" || s.operator != "/") {
-        testFaild(s, testNumber, "expected left: 114, right: 3, display: 3, operator: /");
+    if(s.left_exp != "14" || s.right_exp != "7" || s.display != "7" || s.operator != "/") {
+        testFaild(s, testNumber, "expected left: 14, right: 7, display: 7, operator: /");
         failed = true;
     }
 
     testNumber++;
 
+    //test 7
     s = calculateNextState(JSON.stringify(s) , "=");
     s = JSON.parse(s);
-    if(s.left_exp != "" || s.right_exp != "" || s.display != "38" || s.operator != "") {
-        testFaild(s, testNumber, "expected left: '', right: '', display: 38, operator: ''");
+    if(s.left_exp != "" || s.right_exp != "" || s.display != "2" || s.operator != "") {
+        testFaild(s, testNumber, "expected left: '', right: '', display: 2, operator: ''");
         failed = true;
     }
 
     testNumber++;
     
+    //test 8
     s = calculateNextState(JSON.stringify(s) , "-");
     s = JSON.parse(s);
-    if(s.left_exp != "38" || s.right_exp != "" || s.display != "38" || s.operator != "-") {
-        testFaild(s, testNumber, "expected left: 38, right: '', display: 38, operator: -");
+    if(s.left_exp != "2" || s.right_exp != "" || s.display != "2" || s.operator != "-") {
+        testFaild(s, testNumber, "expected left: 2, right: '', display: 2, operator: -");
         failed = true;
     }
 
     testNumber++;
 
-    s = calculateNextState(JSON.stringify(s) , "8");
+    //test 9
+    s = calculateNextState(JSON.stringify(s) , "1");
     
     s = JSON.parse(s);
-    if(s.left_exp != "38" || s.right_exp != "8" || s.display != "8" || s.operator != "-") {
-        testFaild(s, testNumber, "expected left: 38, right: 8, display: 8, operator: -");
+    if(s.left_exp != "2" || s.right_exp != "1" || s.display != "1" || s.operator != "-") {
+        testFaild(s, testNumber, "expected left: 2, right: 1, display: 1, operator: -");
         failed = true;
     }
 
     testNumber++;
 
+    //test 10
     s = calculateNextState(JSON.stringify(s) , "*");
     
     s = JSON.parse(s);
     
-    if(s.left_exp != "30" || s.right_exp != "" || s.display != "30" || s.operator != "*") {
+    if(s.left_exp != "1" || s.right_exp != "" || s.display != "1" || s.operator != "*") {
     
-        testFaild(s, testNumber, "expected left: 30, right: '', display: 30, operator: *");
+        testFaild(s, testNumber, "expected left: 1, right: '', display: 1, operator: *");
         failed = true;
     }
 
     testNumber++;
 
+    //test 11
     s = calculateNextState(JSON.stringify(s) , "5");
     s = JSON.parse(s);
     
-    if(s.left_exp != "30" || s.right_exp != "5" || s.display != "5" || s.operator != "*") { 
-        testFaild(s, testNumber, "expected left: 30, right: 5, display: 5, operator: *");
+    if(s.left_exp != "1" || s.right_exp != "5" || s.display != "5" || s.operator != "*") { 
+        testFaild(s, testNumber, "expected left: 1, right: 5, display: 5, operator: *");
         failed = true;
     }
 
     testNumber++;
 
+    //test 12
     s = calculateNextState(JSON.stringify(s) , "=");
     s = JSON.parse(s);
     
-    if(s.left_exp != "" || s.right_exp != "" || s.display != "150" || s.operator != "") { 
-        testFaild(s, testNumber, "expected left: '', right: '', display: 150, operator: ''");
+    if(s.left_exp != "" || s.right_exp != "" || s.display != "5" || s.operator != "") { 
+        testFaild(s, testNumber, "expected left: '', right: '', display: 5, operator: ''");
         failed = true;
     }
-
-    testNumber++;
-    //console.log(JSON.stringify(s));
-
     return failed;
 }
 
