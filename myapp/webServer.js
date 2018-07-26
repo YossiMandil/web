@@ -11,7 +11,6 @@ app.use(express.static(__dirname + '/public'))
 
 
 app.post('/calculate', function(req, res) {
-  console.log('shit just got real');
   console.log(req.body);
   //todo checkout if calculate next step gets json or string
   var s = req.body.calculatorState;
