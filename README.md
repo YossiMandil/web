@@ -33,5 +33,6 @@ node serverTests.js
  
 
 
-run ```sudo docker-compose up```
+Run ```sudo docker-compose up```
+The aplication should be runnig on localhost:4000
 
