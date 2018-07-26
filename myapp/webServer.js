@@ -1,4 +1,3 @@
-// todo readme
 var http = require('http');
 var fs = require('fs');
 var web = require('./calculator');
@@ -12,7 +11,6 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/calculate', function(req, res) {
   console.log(req.body);
-  //todo checkout if calculate next step gets json or string
   var s = req.body.calculatorState;
   if (s!=null){
       s = JSON.stringify(s);
@@ -22,4 +20,4 @@ app.post('/calculate', function(req, res) {
 
 })
 
-app.listen(3000, () => console.log('listening...'))
+app.listen(3002, () => console.log('listening...'))

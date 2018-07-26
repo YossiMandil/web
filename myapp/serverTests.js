@@ -1,10 +1,9 @@
 var request = require('sync-request');
-var path = "http://localhost:3000";
+var path = "http://localhost:3002";
 
 
 
 function testAll(){
-    // todo add testss!!!!!!!
     try{
         myTest = buildTest(null,"8","8");
         res = test(myTest,"1");
@@ -14,6 +13,20 @@ function testAll(){
         res = test(myTest,"3");
         myTest = buildTest(res,"=","13");
         res = test(myTest,"4");
+        myTest = buildTest(res,"*","13");
+        res = test(myTest,"5");
+        myTest = buildTest(res,"5","5");
+        res = test(myTest,"6");
+        myTest = buildTest(res,"-","65");
+        res = test(myTest,"7");
+        myTest = buildTest(res,"2","2");
+        res = test(myTest,"8");
+        myTest = buildTest(res,"=","63");
+        res = test(myTest,"9");
+        myTest = buildTest(res,"+","63");
+        res = test(myTest,"10");
+        myTest = buildTest(res,"+","Error!");
+        res = test(myTest,"11");
 	console.log('test passed');
     }
     catch(err){
