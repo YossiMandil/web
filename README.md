@@ -2,6 +2,13 @@
 
 project web biu 2018
 
+## download project
+
+Run:
+
+ ```git clone https://github.com/YossiMandil/web ```  
+```cd myapp ```
+
 ## Run the web server:
 
 
